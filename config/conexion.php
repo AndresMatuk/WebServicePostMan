@@ -4,7 +4,7 @@
 
         protected function Conexion(){
             try{
-                $conectar = $this->dbh = new PDO("mysql:local=127.0.0.1;dbname=evaluacion","usuario1","12345");
+                $conectar = $this->dbh = new PDO("mysql:local=127.0.0.1;dbname=apirest","usuario1","12345");
                 return $conectar;
         } catch (Exception $e){
             print "error DB!! : " . $e->getMessage() . "<br/>";
