@@ -1,5 +1,5 @@
 <?php
-    require_once("../config/conexion.php");
+    require_once("../conexion.php");
     require_once("../models/Categoria.php");
     $categoria = new Categoria();
 
@@ -20,6 +20,17 @@
             $datos=$categoria->insert_Categoria($body["Fk_Id_Usuario"],$body["fecha_horan"],$body["Valor_consignación"]);
             $mostrar_datos=$categoria->get_Categoria_x_id($body["Fk_Id_Usuario"]);
             echo json_encode($mostrar_datos);
+        break;
+
+        case "Update":
+            $datos=$categoria->update_Categoria($body["id_consignaciones"],$body["Fk_Id_Usuario"],$body["Valor_consignación"]);
+            $mostrar_datos=$categoria->get_Categoria_x_id($body["Fk_Id_Usuario"]);
+            echo json_encode($mostrar_datos);
+        break;
+
+        case "Delete":
+            $datos=$categoria->delete_Categoria($body["id_consignaciones"]);
+            echo "eliminado correctamente";
         break;
     }
 ?>

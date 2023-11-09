@@ -43,4 +43,24 @@ INSERT INTO Consignaciones (Fk_Id_Usuario, fecha_horan, Valor_consignación) VAL
 select * from Consignaciones;
 select Consignaciones.* from Consignaciones inner join usuarios where  Consignaciones.Fk_Id_Usuario = usuarios.id_usuario;
 
+Use apirest; 
+explain usuarios;
+explain consignaciones;
+select * from usuarios;
+select * from consignaciones;
+INSERT INTO Consignaciones (Fk_Id_Usuario, fecha_horan, Valor_consignación) VALUES
+(5, '2023-11-05 09:00:00', '100.00'),
+(4, '2023-11-08 10:15:00', '150.50'),
+(7, '2023-11-05 11:30:00', '75.25'),
+(9, '2023-11-07 12:45:00', '200.75'),
+(9, '2023-11-06 13:15:00', '50.00'),
+(2, '2023-11-03 14:30:00', '120.00'),
+(1, '2023-11-02 15:45:00', '90.30'),
+(3, '2023-11-01 16:00:00', '180.45'),
+(2, '2023-11-03 17:15:00', '65.75'),
+(10, '2023-11-07 18:30:00', '220.00'); 
+
+INSERT INTO usuarios (nombre, apellido, tipoId, telefono) VALUES
+("joseph","lopez",'CC', '3112625555');
+select usuarios.nombre, usuarios.apellido, consignaciones.*  from consignaciones inner join usuarios where usuarios.id_usuario = consignaciones.fk_id_usuario;
 

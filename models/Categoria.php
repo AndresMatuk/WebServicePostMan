@@ -29,6 +29,26 @@
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
+        public function update_Categoria($id_consignaciones,$id_usuario,$Valor){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="UPDATE Consignaciones SET Fk_Id_Usuario = ?, Valor_consignación = ? WHERE id_consignaciones = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $id_usuario);
+            $sql->bindValue(2, $Valor);
+            $sql->bindValue(3, $id_consignaciones);
+            $sql->execute();
+            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        public function delete_Categoria($id_consignaciones){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="DELETE FROM Consignaciones WHERE id_consignaciones = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $id_consignaciones);
+            $sql->execute();
+            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 //SELECT usuarios.nombre, usuarios.apellido, consignaciones.*  FROM `consignaciones` inner join `usuarios` where usuarios.id_usuario = consignaciones.fk_id_usuario AND id_usuario = ?
 ?>
